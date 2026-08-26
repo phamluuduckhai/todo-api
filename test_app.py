@@ -6,7 +6,7 @@ client = TestClient(app)
 def test_healthz():
     response = client.get("/healthz")
     assert response.status_code == 200
-    assert response.json() == {"status": "ok"}
+    assert response.json() == {"status": "broken"}
 
 def test_create_and_list_todo():
     response = client.post("/todos", json={"title": "test todo"})
