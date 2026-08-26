@@ -1,0 +1,7 @@
+﻿apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-config
+data:
+  APP_GREETING: {{ .Values.config.APP_GREETING | quote }}
+  READY_DELAY_SECONDS: {{ .Values.config.READY_DELAY_SECONDS | quote }}

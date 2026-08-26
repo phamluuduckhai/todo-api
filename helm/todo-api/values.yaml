@@ -1,0 +1,34 @@
+﻿image:
+  repository: todo-api
+  tag: local
+  pullPolicy: Never
+
+replicaCount: 2
+
+config:
+  APP_GREETING: "hello from Helm"
+  READY_DELAY_SECONDS: "5"
+
+secret:
+  API_KEY: "test123"
+
+resources:
+  requests:
+    cpu: 100m
+  limits:
+    cpu: 200m
+
+service:
+  port: 80
+  targetPort: 8080
+
+ingress:
+  enabled: false
+  className: nginx
+  host: todo-api.local
+
+autoscaling:
+  enabled: false
+  minReplicas: 2
+  maxReplicas: 6
+  targetCPUUtilizationPercentage: 50
